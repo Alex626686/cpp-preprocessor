@@ -25,6 +25,9 @@ bool Preprocess(const path& in_file, const path& out_file, const vector<path>& i
     static regex incl_reg1(R"/(\s*#\s*include\s*<([^>]*)>\s*)/");
     ifstream i_f(in_file, ios::in);
     ofstream o_f(out_file, ios::app);
+    if (!i_f.is_open() || !o_f.is_open()) {
+        return false;
+    }
     smatch m;
     string s;
     int num_string = 0;
